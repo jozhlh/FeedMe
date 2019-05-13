@@ -10,6 +10,8 @@ public class TappableObject : MonoBehaviour
     private float m_impulseForce = 1.0f;
     [SerializeField]
     private float m_gravity = -0.1f;
+    [SerializeField]
+    private float m_repeatModifier = 0.75f;
 
     [Header("Auto Generated")]
     [SerializeField]
@@ -22,6 +24,8 @@ public class TappableObject : MonoBehaviour
     private bool m_tapped = false;
     [SerializeField]
     private bool m_available = true;
+    [SerializeField]
+    private float m_halfForce = 0.0f;
 
 
     /// <summary>
@@ -30,6 +34,7 @@ public class TappableObject : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Input.simulateMouseWithTouches = true;
         m_tapped = false;
         m_available = true;
         m_rigidBody.isKinematic = true;
@@ -51,10 +56,10 @@ public class TappableObject : MonoBehaviour
     /// </summary>
     void OnMouseDown()
     {
-        if (m_available)
-        {
+        // if (m_available)
+        // {
             m_tapped = true;
-        }
+        // }
     }
 
     void FixedUpdate()
@@ -70,8 +75,15 @@ public class TappableObject : MonoBehaviour
             return;
         }
 
+        if (m_available)
+        {
+            m_halfForce = m_impulseForce;
+        }
+
         // TODO: preallocate this
-        var force = new Vector2(0.0f, m_impulseForce);
+        var force = new Vector2(0.0f, m_halfForce);
+
+        m_halfForce *= m_repeatModifier;
 
         // Add impulse force
         m_rigidBody.isKinematic = false;
