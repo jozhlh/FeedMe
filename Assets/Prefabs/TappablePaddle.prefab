@@ -167,12 +167,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8210157085594424793}
-  - component: {fileID: 8210157085594424797}
+  - component: {fileID: 4270905436235901920}
   - component: {fileID: 8210157085594424794}
   - component: {fileID: 8210157085594424798}
   - component: {fileID: 1193678496393478871}
   m_Layer: 0
-  m_Name: Paddle
+  m_Name: TappablePaddle
   m_TagString: Draggable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8210157085594424797
+--- !u!114 &4270905436235901920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,17 +203,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8210157085594424796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 323f91bb9c97d884980a8d26c13b479e, type: 3}
+  m_Script: {fileID: 11500000, guid: ef6852c6fc50bfb43b8c88a2d31c22ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_curve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_resetTime: 0.4
-  m_moveSpeed: 0.1
+  m_impulseForce: 13
+  m_gravity: -0.5
+  m_rigidBody: {fileID: 8210157085594424794}
+  m_defaultPos: {x: 0, y: 0, z: 0}
+  m_tapped: 0
+  m_available: 1
 --- !u!50 &8210157085594424794
 Rigidbody2D:
   serializedVersion: 4
@@ -259,7 +257,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 10}
+  m_Size: {x: 0.59, y: 10}
   m_EdgeRadius: 0
 --- !u!212 &1193678496393478871
 SpriteRenderer:

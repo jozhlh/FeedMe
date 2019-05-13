@@ -22,6 +22,7 @@ public class DraggableObject : MonoBehaviour
     [SerializeField]
     private float m_resetTime = 2.0f;
 
+    [SerializeField]
     private float m_moveSpeed = 0.05f;
 
     private BallController m_ball;
