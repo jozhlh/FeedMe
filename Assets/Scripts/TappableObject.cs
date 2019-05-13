@@ -30,6 +30,7 @@ public class TappableObject : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Input.simulateMouseWithTouches = true;
         m_tapped = false;
         m_available = true;
         m_rigidBody.isKinematic = true;
